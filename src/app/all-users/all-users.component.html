@@ -1,0 +1,8 @@
+<!--<p>all-users works!</p>-->
+<!--<ul>-->
+<!--  <li *ngFor="let u of users"> {{u | json}}</li>-->
+<!--</ul>-->
+<router-outlet></router-outlet>
+<hr>
+<app-users *ngFor="let u of users" [user]="u"></app-users>
+

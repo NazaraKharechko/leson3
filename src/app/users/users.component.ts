@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit} from '@angular/core';
 import {Modeluser} from '../modelUser/modeluser';
 
 @Component({
@@ -9,8 +9,12 @@ import {Modeluser} from '../modelUser/modeluser';
 export class UsersComponent  {
   @Input()
   user: Modeluser[];
+  emiter = new EventEmitter()
   constructor() { }
 
 
-
+  showusers(user: Modeluser[]) {
+    console.log(user);
+    this.emiter.emit(user);
+  }
 }

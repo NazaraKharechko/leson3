@@ -1,4 +1,4 @@
-class ModolPost {
+export class ModolPost {
   id: number;
   title: string;
   body: string;

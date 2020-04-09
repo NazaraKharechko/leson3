@@ -12,10 +12,10 @@ import {PostsService} from './service/posts.service';
 })
 export class AppComponent {
   title = 'leson1';
-  users: Modeluser[];
-  post: ModolPost[];
-  constructor(private userService: UserService , private postsService: PostsService) {
-  this.userService.getUsers().subscribe(value => {console.log(value) ; this.users = value} );
-  this.postsService.getPost().subscribe( value => {this.post = value ; console.log(value)});
+  // users: Modeluser[];
+  // post: ModolPost[];
+  constructor() {
+  // this.userService.getUsers().subscribe(value => {console.log(value) ; this.users = value} );
+  // this.postsService.getPost().subscribe( value => {this.post = value ; console.log(value)});
   }
 }
