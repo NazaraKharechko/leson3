@@ -12,8 +12,7 @@ import {ModolPost} from '../modolPost/modolPost';
 export class ComentComponent implements OnInit {
 comment: ModolComment[];
   constructor(private activateRouter: ActivatedRoute , private postsService: Post2Service , private route: Router) {
-    this.activateRouter.params.subscribe( params => this.postsService.getPost2(params.id)
-      .subscribe(value => console.log(value)));
+    this.activateRouter.params.subscribe( params => console.log(params));
   }
 
   ngOnInit(): void {

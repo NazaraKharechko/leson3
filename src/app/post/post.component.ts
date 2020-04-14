@@ -19,10 +19,10 @@ export class PostComponent  {
   }
 
   comments(post: ModolPost) {
-    this.router.navigate([post.id , 'cement'] ,
+    this.router.navigate([post.id , 'comments'] ,
       {
         state: {post} ,
-        queryParams: {idofuser: post.id} ,
+        queryParams: {postId: post.id} ,
         relativeTo: this.activatedRoute,
       });
   }
