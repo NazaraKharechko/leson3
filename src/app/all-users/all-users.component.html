@@ -2,7 +2,10 @@
 <!--<ul>-->
 <!--  <li *ngFor="let u of users"> {{u | json}}</li>-->
 <!--</ul>-->
-<router-outlet></router-outlet>
-<hr>
-<app-users *ngFor="let u of users" [user]="u"></app-users>
 
+<div>
+  User it is :{{xxx?.name}}
+</div>
+<hr>
+<app-users *ngFor="let u of users" [user]="u" (emitter)="catcher($event)"></app-users>
+<router-outlet></router-outlet>

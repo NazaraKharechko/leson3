@@ -1,5 +1,6 @@
-import {Component, EventEmitter, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Modeluser} from '../modelUser/modeluser';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-users',
@@ -9,12 +10,19 @@ import {Modeluser} from '../modelUser/modeluser';
 export class UsersComponent  {
   @Input()
   user: Modeluser[];
-  emiter = new EventEmitter()
-  constructor() { }
+  @Output()
+  emitter = new EventEmitter();
+  constructor( private router: Router , private activatedRoute: ActivatedRoute) { }
 
 
-  showusers(user: Modeluser[]) {
-    console.log(user);
-    this.emiter.emit(user);
+  navigate(user: Modeluser) {
+
+    this.emitter.emit(user);
+    this.router.navigate([user.id , 'posts'] ,
+      {
+        state: {user} ,
+        queryParams: {idofuser: user.id} ,
+        relativeTo: this.activatedRoute,
+      });
   }
 }

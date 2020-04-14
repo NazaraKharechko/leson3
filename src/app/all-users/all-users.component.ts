@@ -10,6 +10,7 @@ import {Modeluser} from '../modelUser/modeluser';
 })
 export class AllUsersComponent implements OnInit {
  users: Modeluser[];
+ xxx: any;
   constructor( private activateRouter: ActivatedRoute) {
    this.users = this.activateRouter.snapshot.data.allUsers as Modeluser[];
    console.log(this.activateRouter.snapshot.data);
@@ -18,4 +19,8 @@ export class AllUsersComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  catcher($event: any) {
+    console.log($event);
+    this.xxx = $event;
+  }
 }

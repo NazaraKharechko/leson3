@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ModolPost} from '../modolPost/modolPost';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
+import {PostsService} from '../service/posts.service';
 
 @Component({
   selector: 'app-all-post',
@@ -9,9 +10,21 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class AllPostComponent implements OnInit {
 post: ModolPost[];
-  constructor(private activateRouter: ActivatedRoute ) {
-    console.log(this.activateRouter.snapshot.data);
+  constructor(private activateRouter: ActivatedRoute , private postsService: PostsService , private route: Router) {
+
     this.post = this.activateRouter.snapshot.data.allPost as ModolPost[];
+
+    this.activateRouter.params.subscribe( params => this.postsService.getPost(params.id)
+      .subscribe(value => this.post = value));
+
+
+
+
+    // this.activateRouter.queryParams.subscribe(queryParams => this.postsService.getPost(queryParams.idofuser)
+    //   .subscribe(value => console.log(value)));
+    //
+    // this.postsService.getPost(this.route.getCurrentNavigation().extras.state.user.id)
+    // .subscribe(value => console.log(value));
   }
 
   ngOnInit(): void {

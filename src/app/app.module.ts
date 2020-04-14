@@ -8,15 +8,16 @@ import { PostComponent } from './post/post.component';
 import {RouterModule, Routes} from '@angular/router';
 import { HollowComponent } from './hollow/hollow.component';
 import { AllUsersComponent } from './all-users/all-users.component';
-import {UserResolveService} from './service/user-resolve.service';
 import { AllPostComponent } from './all-post/all-post.component';
-import {PostResolveServiceService} from './service/post-resolve-service.service';
+import { ComentComponent } from './coment/coment.component';
+import {UserResolveService} from './service/user-resolve-service.service';
 
 
 const routes: Routes = [
-  {path: 'users' , component: AllUsersComponent , resolve: {allUsers: UserResolveService} },
   {path: '' , component: HollowComponent },
-  {path: 'post' , component: AllPostComponent , resolve: {allPost: PostResolveServiceService} },
+  {path: 'users' , component: AllUsersComponent , resolve: {allUsers: UserResolveService}
+  , children: [{path: ':id/posts' , component: AllPostComponent}] },
+ {path: 'post' , component: PostComponent  , children:[{path: ':id/cement', component: ComentComponent }] },
 ];
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ const routes: Routes = [
     PostComponent,
     HollowComponent,
     AllUsersComponent,
-    AllPostComponent
+    AllPostComponent,
+    ComentComponent
   ],
   imports: [
     BrowserModule,
